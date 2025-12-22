@@ -1,0 +1,1243 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>China Travel Guide | 中国旅行指南</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- Tailwind配置 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#165DFF',
+            secondary: '#FF7D00',
+            neutral: {
+              100: '#F5F7FA',
+              200: '#E4E7ED',
+              300: '#C0C4CC',
+              400: '#909399',
+              500: '#606266',
+              600: '#303133',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Montserrat', 'sans-serif']
+          },
+        },
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .card-shadow {
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+      }
+      .nav-shadow {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      }
+      .text-balance {
+        text-wrap: balance;
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+    }
+  </style>
+  
+  <!-- 引入更美观的字体 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-neutral-100 font-sans text-neutral-600">
+  <!-- 导航栏 -->
+  <header id="navbar" class="fixed w-full bg-white nav-shadow z-50 transition-all duration-300">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <i class="fa fa-map-signs text-primary text-2xl"></i>
+        <h1 class="text-xl md:text-2xl font-bold font-display text-neutral-600">China Travel Guide</h1>
+      </div>
+      
+      <!-- 桌面导航 -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="#city-guide" class="text-neutral-600 hover:text-primary transition-colors font-medium font-display">City Guide</a>
+        <a href="#survival-guide" class="text-neutral-600 hover:text-primary transition-colors font-medium font-display">Survival Guide</a>
+        <a href="#emergency" class="text-neutral-600 hover:text-primary transition-colors font-medium font-display">Emergency</a>
+        <a href="#phrasebook" class="text-neutral-600 hover:text-primary transition-colors font-medium font-display">Phrasebook</a>
+        <button id="github-login-btn" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg transition-colors font-medium">
+          <i class="fa fa-github mr-2"></i> Login
+        </button>
+        <button id="github-logout-btn" class="hidden bg-neutral-200 hover:bg-neutral-300 text-neutral-600 px-4 py-2 rounded-lg transition-colors font-medium">
+          <i class="fa fa-sign-out mr-2"></i> Logout
+        </button>
+        <button id="contribute-btn" class="hidden bg-secondary hover:bg-secondary/90 text-white px-4 py-2 rounded-lg transition-colors font-medium">
+          <i class="fa fa-plus mr-2"></i> Contribute
+        </button>
+      </nav>
+      
+      <!-- 移动端菜单按钮 -->
+      <button id="menu-toggle" class="md:hidden text-neutral-600 hover:text-primary">
+        <i class="fa fa-bars text-xl"></i>
+      </button>
+    </div>
+    
+    <!-- 移动端导航菜单 -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-neutral-200">
+      <div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
+        <a href="#city-guide" class="text-neutral-600 hover:text-primary transition-colors py-2 font-medium font-display">City Guide</a>
+        <a href="#survival-guide" class="text-neutral-600 hover:text-primary transition-colors py-2 font-medium font-display">Survival Guide</a>
+        <a href="#emergency" class="text-neutral-600 hover:text-primary transition-colors py-2 font-medium font-display">Emergency</a>
+        <a href="#phrasebook" class="text-neutral-600 hover:text-primary transition-colors py-2 font-medium font-display">Phrasebook</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 英雄区域 -->
+  <section class="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-br from-primary/10 to-primary/5">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold font-display text-neutral-600 leading-tight mb-6 tracking-tight text-shadow">
+          Plan Your Perfect Trip to China
+        </h1>
+        <p class="text-[clamp(1.1rem,2vw,1.4rem)] text-neutral-500 mb-8 max-w-2xl mx-auto text-balance font-sans">Essential guides for exploring China's top destinations and navigating daily life with ease</p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="#city-guide" class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg transition-all transform hover:scale-105 shadow-lg font-medium">
+            Explore Cities
+          </a>
+          <a href="#survival-guide" class="bg-white hover:bg-neutral-50 text-primary border border-primary px-8 py-3 rounded-lg transition-all transform hover:scale-105 shadow-md font-medium">
+            Survival Guide
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 城市与景点指南 -->
+  <section id="city-guide" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-[clamp(2rem,3vw,3rem)] font-bold font-display text-neutral-600 mb-4 text-shadow">City & Attractions Guide</h2>
+        <p class="text-lg text-neutral-500 max-w-2xl mx-auto font-sans">Discover China's most popular destinations and must-visit attractions</p>
+      </div>
+      
+      <div id="city-guide-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- 北京卡片 -->
+        <div class="bg-white rounded-xl overflow-hidden card-shadow hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+          <div class="h-48 overflow-hidden">
+            <img src="https://p3-search.byteimg.com/obj/labis/e5bd0585ca76278d9f7101cd2be125bb" alt="Beijing cityscape" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold font-display text-neutral-600 mb-2">Beijing</h3>
+            <p class="text-neutral-500 mb-4 font-sans">China's capital, blending ancient history with modern marvels</p>
+            <div class="space-y-3">
+              <div class="flex items-start">
+                <div class="bg-primary/10 p-2 rounded-full mr-3">
+                  <i class="fa fa-university text-primary"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium font-display text-neutral-600">Forbidden City</h4>
+                  <p class="text-sm text-neutral-500 font-sans">Imperial palace of Ming and Qing dynasties</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="bg-primary/10 p-2 rounded-full mr-3">
+                  <i class="fa fa-tree text-primary"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium font-display text-neutral-600">Great Wall</h4>
+                  <p class="text-sm text-neutral-500 font-sans">Ancient defensive structure spanning mountains</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="bg-primary/10 p-2 rounded-full mr-3">
+                  <i class="fa fa-institution text-primary"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium font-display text-neutral-600">Temple of Heaven</h4>
+                  <p class="text-sm text-neutral-500 font-sans">Where emperors prayed for good harvests</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 上海卡片 -->
+        <div class="bg-white rounded-xl overflow-hidden card-shadow hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+          <div class="h-48 overflow-hidden">
+            <img src="https://p3-search.byteimg.com/obj/labis/36da6b011bd7a2751ac2bc38e8dc3d4a" alt="Shanghai skyline" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold font-display text-neutral-600 mb-2">Shanghai</h3>
+            <p class="text-neutral-500 mb-4 font-sans">A vibrant metropolis showcasing China's modernization</p>
+            <div class="space-y-3">
+              <div class="flex items-start">
+                <div class="bg-primary/10 p-2 rounded-full mr-3">
+                  <i class="fa fa-building text-primary"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium font-display text-neutral-600">The Bund</h4>
+                  <p class="text-sm text-neutral-500 font-sans">Iconic waterfront with colonial-era buildings</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="bg-primary/10 p-2 rounded-full mr-3">
+                  <i class="fa fa-building-o text-primary"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium font-display text-neutral-600">Shanghai Tower</h4>
+                  <p class="text-sm text-neutral-500 font-sans">One of the world's tallest skyscrapers</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="bg-primary/10 p-2 rounded-full mr-3">
+                  <i class="fa fa-pagelines text-primary"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium font-display text-neutral-600">Yu Garden</h4>
+                  <p class="text-sm text-neutral-500 font-sans">Classical Ming-era garden in the city center</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 西安卡片 -->
+        <div class="bg-white rounded-xl overflow-hidden card-shadow hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+          <div class="h-48 overflow-hidden">
+            <img src="https://p3-search.byteimg.com/obj/labis/5a899a92753c4a5139af20b6e825febb" alt="Terracotta Warriors" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold font-display text-neutral-600 mb-2">Xi'an</h3>
+            <p class="text-neutral-500 mb-4 font-sans">Ancient capital famous for its historical relics</p>
+            <div class="space-y-3">
+              <div class="flex items-start">
+                <div class="bg-primary/10 p-2 rounded-full mr-3">
+                  <i class="fa fa-users text-primary"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium font-display text-neutral-600">Terracotta Army</h4>
+                  <p class="text-sm text-neutral-500 font-sans">2,000-year-old army of life-size clay soldiers</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="bg-primary/10 p-2 rounded-full mr-3">
+                  <i class="fa fa-university text-primary"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium font-display text-neutral-600">City Wall</h4>
+                  <p class="text-sm text-neutral-500 font-sans">Well-preserved ancient city fortifications</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="bg-primary/10 p-2 rounded-full mr-3">
+                  <i class="fa fa-book text-primary"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium font-display text-neutral-600">Shaanxi History Museum</h4>
+                  <p class="text-sm text-neutral-500 font-sans">Extensive collection of Chinese artifacts</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 成都卡片 -->
+        <div class="bg-white rounded-xl overflow-hidden card-shadow hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+          <div class="h-48 overflow-hidden">
+            <img src="https://p3-search.byteimg.com/obj/labis/32cd52b186b61effdd730e52c4447814" alt="Pandas in Chengdu" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold font-display text-neutral-600 mb-2">Chengdu</h3>
+            <p class="text-neutral-500 mb-4 font-sans">Relaxed city famous for pandas and spicy cuisine</p>
+            <div class="space-y-3">
+              <div class="flex items-start">
+                <div class="bg-primary/10 p-2 rounded-full mr-3">
+                  <i class="fa fa-paw text-primary"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium font-display text-neutral-600">Chengdu Panda Base</h4>
+                  <p class="text-sm text-neutral-500 font-sans">Conservation center for giant pandas</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="bg-primary/10 p-2 rounded-full mr-3">
+                  <i class="fa fa-home text-primary"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium font-display text-neutral-600">Wuhou Shrine</h4>
+                  <p class="text-sm text-neutral-500 font-sans">Temple dedicated to Zhuge Liang</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="bg-primary/10 p-2 rounded-full mr-3">
+                  <i class="fa fa-cutlery text-primary"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium font-display text-neutral-600">Jinli Ancient Street</h4>
+                  <p class="text-sm text-neutral-500 font-sans">Traditional street with local snacks</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 广州卡片 -->
+        <div class="bg-white rounded-xl overflow-hidden card-shadow hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+          <div class="h-48 overflow-hidden">
+            <img src="https://p3-search.byteimg.com/obj/tos-cn-i-qvj2lq49k0/a6ea196a2d0f44068980d90c261640b4" alt="Guangzhou skyline" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold font-display text-neutral-600 mb-2">Guangzhou</h3>
+            <p class="text-neutral-500 mb-4 font-sans">Vibrant southern city known for its cuisine</p>
+            <div class="space-y-3">
+              <div class="flex items-start">
+                <div class="bg-primary/10 p-2 rounded-full mr-3">
+                  <i class="fa fa-building text-primary"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium font-display text-neutral-600">Canton Tower</h4>
+                  <p class="text-sm text-neutral-500 font-sans">Iconic TV tower with observation decks</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="bg-primary/10 p-2 rounded-full mr-3">
+                  <i class="fa fa-university text-primary"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium font-display text-neutral-600">Chen Clan Academy</h4>
+                  <p class="text-sm text-neutral-500 font-sans">Fine example of traditional Chinese architecture</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="bg-primary/10 p-2 rounded-full mr-3">
+                  <i class="fa fa-tree text-primary"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium font-display text-neutral-600">Baiyun Mountain</h4>
+                  <p class="text-sm text-neutral-500 font-sans">Scenic mountain offering city views</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 桂林卡片 -->
+        <div class="bg-white rounded-xl overflow-hidden card-shadow hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+          <div class="h-48 overflow-hidden">
+            <img src="https://p3-search.byteimg.com/obj/labis/87a3ab99ba76ef70d5c954eb5ba625f8" alt="Guilin landscape" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold font-display text-neutral-600 mb-2">Guilin</h3>
+            <p class="text-neutral-500 mb-4 font-sans">Breathtaking natural scenery of karst mountains</p>
+            <div class="space-y-3">
+              <div class="flex items-start">
+                <div class="bg-primary/10 p-2 rounded-full mr-3">
+                  <i class="fa fa-tree text-primary"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium font-display text-neutral-600">Li River</h4>
+                  <p class="text-sm text-neutral-500 font-sans">Scenic river with dramatic limestone peaks</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="bg-primary/10 p-2 rounded-full mr-3">
+                  <i class="fa fa-mountain text-primary"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium font-display text-neutral-600">Reed Flute Cave</h4>
+                  <p class="text-sm text-neutral-500 font-sans">Stalactite and stalagmite filled cave</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="bg-primary/10 p-2 rounded-full mr-3">
+                  <i class="fa fa-pagelines text-primary"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium font-display text-neutral-600">Longji Rice Terraces</h4>
+                  <p class="text-sm text-neutral-500 font-sans">Ancient terraced fields carved into mountains</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-12">
+        <button class="bg-white border border-primary text-primary hover:bg-primary hover:text-white transition-colors duration-300 px-6 py-3 rounded-lg font-medium font-display">
+          Load More Cities
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 实用生存指南 -->
+  <section id="survival-guide" class="py-16 bg-neutral-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-[clamp(2rem,3vw,3rem)] font-bold font-display text-neutral-600 mb-4 text-shadow">Essential Survival Guide</h2>
+        <p class="text-lg text-neutral-500 max-w-2xl mx-auto font-sans">Practical tips for navigating daily life in China with ease</p>
+      </div>
+      
+      <div id="survival-guide-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- 支付 -->
+        <div class="bg-white rounded-xl p-6 card-shadow hover:shadow-lg transition-all duration-300">
+          <div class="flex items-center mb-6">
+            <div class="bg-secondary/10 p-3 rounded-full mr-4">
+              <i class="fa fa-credit-card text-secondary text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold font-display text-neutral-600">Payment</h3>
+          </div>
+          
+          <div class="space-y-4">
+            <div>
+              <h4 class="font-medium font-display text-neutral-600 mb-2">Current Situation</h4>
+              <p class="text-neutral-500 font-sans">Cash is rarely used in China. Mobile payments (WeChat Pay/Alipay) dominate daily transactions.</p>
+            </div>
+            
+            <div>
+              <h4 class="font-medium font-display text-neutral-600 mb-2">Solutions</h4>
+              <ul class="list-disc pl-5 text-neutral-500 space-y-2 font-sans">
+                <li>Bind international credit cards (Visa/Mastercard) to <a href="https://intl.alipay.com/" class="text-primary hover:underline">Alipay TourCard</a></li>
+                <li>Get a digital RMB prepaid card</li>
+                <li>Exchange cash at banks or hotels (keep small denominations)</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 class="font-medium font-display text-neutral-600 mb-2">Must-Have Apps</h4>
+              <div class="flex space-x-3">
+                <span class="bg-neutral-100 px-3 py-1 rounded-full text-sm font-sans">Alipay</span>
+                <span class="bg-neutral-100 px-3 py-1 rounded-full text-sm font-sans">WeChat Pay</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 交通 -->
+        <div class="bg-white rounded-xl p-6 card-shadow hover:shadow-lg transition-all duration-300">
+          <div class="flex items-center mb-6">
+            <div class="bg-secondary/10 p-3 rounded-full mr-4">
+              <i class="fa fa-subway text-secondary text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold font-display text-neutral-600">Transportation</h3>
+          </div>
+          
+          <div class="space-y-4">
+            <div>
+              <h4 class="font-medium font-display text-neutral-600 mb-2">Inter-city</h4>
+              <ul class="list-disc pl-5 text-neutral-500 space-y-2 font-sans">
+                <li>High-speed trains: Book via <a href="https://www.12306.cn/" class="text-primary hover:underline">12306</a> (English available) or <a href="https://www.trip.com/" class="text-primary hover:underline">Trip.com</a></li>
+                <li>Airport transfers: Use subway, taxi, or ride-hailing apps</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 class="font-medium font-display text-neutral-600 mb-2">Local</h4>
+              <ul class="list-disc pl-5 text-neutral-500 space-y-2 font-sans">
+                <li>Subway/bus: Use QR codes in Alipay/WeChat</li>
+                <li>Ride-hailing: <a href="https://www.xiaojukeji.com/en/" class="text-primary hover:underline">Didi</a> (supports international payment)</li>
+                <li>Shared bikes: Scan QR code and pay via app</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 酒店与住宿 -->
+        <div class="bg-white rounded-xl p-6 card-shadow hover:shadow-lg transition-all duration-300">
+          <div class="flex items-center mb-6">
+            <div class="bg-secondary/10 p-3 rounded-full mr-4">
+              <i class="fa fa-bed text-secondary text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold font-display text-neutral-600">Hotels & Accommodation</h3>
+          </div>
+          
+          <div class="space-y-4">
+            <div>
+              <h4 class="font-medium font-display text-neutral-600 mb-2">Recommended Platforms</h4>
+              <div class="flex flex-wrap gap-2">
+                <a href="https://www.trip.com/" class="bg-neutral-100 px-3 py-1 rounded-full text-sm font-sans text-neutral-600 hover:bg-primary hover:text-white transition-colors">Trip.com</a>
+                <a href="https://www.booking.com/" class="bg-neutral-100 px-3 py-1 rounded-full text-sm font-sans text-neutral-600 hover:bg-primary hover:text-white transition-colors">Booking.com</a>
+                <a href="https://www.agoda.com/" class="bg-neutral-100 px-3 py-1 rounded-full text-sm font-sans text-neutral-600 hover:bg-primary hover:text-white transition-colors">Agoda</a>
+              </div>
+            </div>
+            
+            <div>
+              <h4 class="font-medium font-display text-neutral-600 mb-2">Important Notes</h4>
+              <ul class="list-disc pl-5 text-neutral-500 space-y-2 font-sans">
+                <li>Choose hotels marked "Accepts Foreign Guests"</li>
+                <li>Always carry your passport for check-in</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 通信与网络 -->
+        <div class="bg-white rounded-xl p-6 card-shadow hover:shadow-lg transition-all duration-300">
+          <div class="flex items-center mb-6">
+            <div class="bg-secondary/10 p-3 rounded-full mr-4">
+              <i class="fa fa-wifi text-secondary text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold font-display text-neutral-600">Communication & Internet</h3>
+          </div>
+          
+          <div class="space-y-4">
+            <div>
+              <h4 class="font-medium font-display text-neutral-600 mb-2">VPN</h4>
+              <p class="text-neutral-500 font-sans">Access to Google, Facebook, Instagram, WhatsApp requires a reliable VPN. Purchase and install before arrival.</p>
+            </div>
+            
+            <div>
+              <h4 class="font-medium font-display text-neutral-600 mb-2">SIM Cards & Data</h4>
+              <ul class="list-disc pl-5 text-neutral-500 space-y-2 font-sans">
+                <li>Buy a tourist SIM card at the airport or convenience stores (passport required)</li>
+                <li>Use international roaming or eSIM if available</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 语言 -->
+        <div class="bg-white rounded-xl p-6 card-shadow hover:shadow-lg transition-all duration-300">
+          <div class="flex items-center mb-6">
+            <div class="bg-secondary/10 p-3 rounded-full mr-4">
+              <i class="fa fa-language text-secondary text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold font-display text-neutral-600">Language</h3>
+          </div>
+          
+          <div class="space-y-4">
+            <div>
+              <h4 class="font-medium font-display text-neutral-600 mb-2">Current Situation</h4>
+              <p class="text-neutral-500 font-sans">Language barrier is significant outside major tourist areas. English is limited.</p>
+            </div>
+            
+            <div>
+              <h4 class="font-medium font-display text-neutral-600 mb-2">Solutions</h4>
+              <ul class="list-disc pl-5 text-neutral-500 space-y-2 font-sans">
+                <li>Use translation apps: <a href="https://translate.google.com/" class="text-primary hover:underline">Google Translate</a> (download Chinese offline pack), Tencent Translate, Microsoft Translator</li>
+                <li>Learn basic phrases: "Hello", "Thank you", "How much is this?"</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 其他实用贴士 -->
+        <div class="bg-white rounded-xl p-6 card-shadow hover:shadow-lg transition-all duration-300">
+          <div class="flex items-center mb-6">
+            <div class="bg-secondary/10 p-3 rounded-full mr-4">
+              <i class="fa fa-lightbulb-o text-secondary text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold font-display text-neutral-600">Other Tips</h3>
+          </div>
+          
+          <div class="space-y-4">
+            <div>
+              <h4 class="font-medium font-display text-neutral-600 mb-2">Must-Have Apps</h4>
+              <div class="flex flex-wrap gap-2">
+                <a href="https://amap.com/" class="bg-neutral-100 px-3 py-1 rounded-full text-sm font-sans text-neutral-600 hover:bg-primary hover:text-white transition-colors">Gaode Map</a>
+                <a href="https://www.xiaojukeji.com/en/" class="bg-neutral-100 px-3 py-1 rounded-full text-sm font-sans text-neutral-600 hover:bg-primary hover:text-white transition-colors">Didi</a>
+                <a href="https://translate.google.com/" class="bg-neutral-100 px-3 py-1 rounded-full text-sm font-sans text-neutral-600 hover:bg-primary hover:text-white transition-colors">Google Translate</a>
+                <a href="https://intl.alipay.com/" class="bg-neutral-100 px-3 py-1 rounded-full text-sm font-sans text-neutral-600 hover:bg-primary hover:text-white transition-colors">Alipay</a>
+              </div>
+            </div>
+            
+            <div>
+              <h4 class="font-medium font-display text-neutral-600 mb-2">General Tips</h4>
+              <ul class="list-disc pl-5 text-neutral-500 space-y-2 font-sans">
+                <li>Drink bottled water, avoid tap water</li>
+                <li>China uses Type A, C, I plugs. Bring a universal adapter</li>
+                <li>Keep important documents in a secure place</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 紧急联系方式 -->
+  <section id="emergency" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-[clamp(2rem,3vw,3rem)] font-bold font-display text-neutral-600 mb-4 text-shadow">Emergency Contacts</h2>
+        <p class="text-lg text-neutral-500 max-w-2xl mx-auto font-sans">Important numbers to keep handy during your trip</p>
+      </div>
+      
+      <div class="max-w-2xl mx-auto">
+        <div class="bg-primary/5 rounded-xl p-8 border border-primary/20">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="flex items-center p-3 bg-white rounded-lg shadow-sm">
+              <div class="bg-red-100 p-3 rounded-full mr-4">
+                <i class="fa fa-ambulance text-red-500"></i>
+              </div>
+              <div>
+                <h3 class="font-medium font-display text-neutral-600">Ambulance</h3>
+                <p class="text-primary font-bold text-lg">120</p>
+              </div>
+            </div>
+            
+            <div class="flex items-center p-3 bg-white rounded-lg shadow-sm">
+              <div class="bg-red-100 p-3 rounded-full mr-4">
+                <i class="fa fa-police text-red-500"></i>
+              </div>
+              <div>
+                <h3 class="font-medium font-display text-neutral-600">Police</h3>
+                <p class="text-primary font-bold text-lg">110</p>
+              </div>
+            </div>
+            
+            <div class="flex items-center p-3 bg-white rounded-lg shadow-sm">
+              <div class="bg-red-100 p-3 rounded-full mr-4">
+                <i class="fa fa-fire text-red-500"></i>
+              </div>
+              <div>
+                <h3 class="font-medium font-display text-neutral-600">Fire</h3>
+                <p class="text-primary font-bold text-lg">119</p>
+              </div>
+            </div>
+            
+            <div class="flex items-center p-3 bg-white rounded-lg shadow-sm">
+              <div class="bg-blue-100 p-3 rounded-full mr-4">
+                <i class="fa fa-phone text-blue-500"></i>
+              </div>
+              <div>
+                <h3 class="font-medium font-display text-neutral-600">Tourist Helpline</h3>
+                <p class="text-primary font-bold text-lg">12301</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-8">
+            <h3 class="font-medium font-display text-neutral-600 mb-4">Embassy/Consulate Contact</h3>
+            <p class="text-neutral-500 mb-2 font-sans">Contact your country's embassy or consulate in case of emergency:</p>
+            <div class="flex items-center p-3 bg-white rounded-lg shadow-sm">
+              <div class="bg-blue-100 p-3 rounded-full mr-4">
+                <i class="fa fa-united-states text-blue-500"></i>
+              </div>
+              <div>
+                <h4 class="font-medium font-display text-neutral-600">U.S. Embassy in Beijing</h4>
+                <p class="text-sm text-neutral-500 font-sans">Emergency Phone: +86 (10) 8531-3000</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 常用中文短语 -->
+  <section id="phrasebook" class="py-16 bg-neutral-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-[clamp(2rem,3vw,3rem)] font-bold font-display text-neutral-600 mb-4 text-shadow">Chinese Phrasebook</h2>
+        <p class="text-lg text-neutral-500 max-w-2xl mx-auto font-sans">Basic phrases to help you communicate during your trip</p>
+      </div>
+      
+      <div class="max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white rounded-xl p-6 card-shadow hover:shadow-lg transition-all duration-300">
+            <h3 class="text-xl font-bold font-display text-neutral-600 mb-4">Greetings</h3>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center p-3 bg-neutral-50 rounded-lg">
+                <div>
+                  <p class="font-medium font-display text-neutral-600">你好</p>
+                  <p class="text-sm text-neutral-500 font-sans">Nǐ hǎo</p>
+                </div>
+                <p class="text-neutral-600 font-sans">Hello</p>
+              </div>
+              
+              <div class="flex justify-between items-center p-3 bg-neutral-50 rounded-lg">
+                <div>
+                  <p class="font-medium font-display text-neutral-600">再见</p>
+                  <p class="text-sm text-neutral-500 font-sans">Zài jiàn</p>
+                </div>
+                <p class="text-neutral-600 font-sans">Goodbye</p>
+              </div>
+              
+              <div class="flex justify-between items-center p-3 bg-neutral-50 rounded-lg">
+                <div>
+                  <p class="font-medium font-display text-neutral-600">谢谢</p>
+                  <p class="text-sm text-neutral-500 font-sans">Xiè xie</p>
+                </div>
+                <p class="text-neutral-600 font-sans">Thank you</p>
+              </div>
+              
+              <div class="flex justify-between items-center p-3 bg-neutral-50 rounded-lg">
+                <div>
+                  <p class="font-medium font-display text-neutral-600">对不起</p>
+                  <p class="text-sm text-neutral-500 font-sans">Duì bu qǐ</p>
+                </div>
+                <p class="text-neutral-600 font-sans">Sorry</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-xl p-6 card-shadow hover:shadow-lg transition-all duration-300">
+            <h3 class="text-xl font-bold font-display text-neutral-600 mb-4">Essential Phrases</h3>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center p-3 bg-neutral-50 rounded-lg">
+                <div>
+                  <p class="font-medium font-display text-neutral-600">请问</p>
+                  <p class="text-sm text-neutral-500 font-sans">Qǐng wèn</p>
+                </div>
+                <p class="text-neutral-600 font-sans">Excuse me</p>
+              </div>
+              
+              <div class="flex justify-between items-center p-3 bg-neutral-50 rounded-lg">
+                <div>
+                  <p class="font-medium font-display text-neutral-600">这个多少钱？</p>
+                  <p class="text-sm text-neutral-500 font-sans">Zhè ge duō shǎo qián?</p>
+                </div>
+                <p class="text-neutral-600 font-sans">How much is this?</p>
+              </div>
+              
+              <div class="flex justify-between items-center p-3 bg-neutral-50 rounded-lg">
+                <div>
+                  <p class="font-medium font-display text-neutral-600">我想要...</p>
+                  <p class="text-sm text-neutral-500 font-sans">Wǒ xiǎng yào...</p>
+                </div>
+                <p class="text-neutral-600 font-sans">I would like...</p>
+              </div>
+              
+              <div class="flex justify-between items-center p-3 bg-neutral-50 rounded-lg">
+                <div>
+                  <p class="font-medium font-display text-neutral-600">洗手间在哪里？</p>
+                  <p class="text-sm text-neutral-500 font-sans">Xǐ shǒu jiān zài nǎ lǐ?</p>
+                </div>
+                <p class="text-neutral-600 font-sans">Where is the bathroom?</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-xl p-6 card-shadow hover:shadow-lg transition-all duration-300">
+            <h3 class="text-xl font-bold font-display text-neutral-600 mb-4">Numbers</h3>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center p-3 bg-neutral-50 rounded-lg">
+                <div>
+                  <p class="font-medium font-display text-neutral-600">一</p>
+                  <p class="text-sm text-neutral-500 font-sans">Yī</p>
+                </div>
+                <p class="text-neutral-600 font-sans">One</p>
+              </div>
+              
+              <div class="flex justify-between items-center p-3 bg-neutral-50 rounded-lg">
+                <div>
+                  <p class="font-medium font-display text-neutral-600">二</p>
+                  <p class="text-sm text-neutral-500 font-sans">Èr</p>
+                </div>
+                <p class="text-neutral-600 font-sans">Two</p>
+              </div>
+              
+              <div class="flex justify-between items-center p-3 bg-neutral-50 rounded-lg">
+                <div>
+                  <p class="font-medium font-display text-neutral-600">三</p>
+                  <p class="text-sm text-neutral-500 font-sans">Sān</p>
+                </div>
+                <p class="text-neutral-600 font-sans">Three</p>
+              </div>
+              
+              <div class="flex justify-between items-center p-3 bg-neutral-50 rounded-lg">
+                <div>
+                  <p class="font-medium font-display text-neutral-600">四</p>
+                  <p class="text-sm text-neutral-500 font-sans">Sì</p>
+                </div>
+                <p class="text-neutral-600 font-sans">Four</p>
+              </div>
+              
+              <div class="flex justify-between items-center p-3 bg-neutral-50 rounded-lg">
+                <div>
+                  <p class="font-medium font-display text-neutral-600">五</p>
+                  <p class="text-sm text-neutral-500 font-sans">Wǔ</p>
+                </div>
+                <p class="text-neutral-600 font-sans">Five</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-xl p-6 card-shadow hover:shadow-lg transition-all duration-300">
+            <h3 class="text-xl font-bold font-display text-neutral-600 mb-4">Food & Dining</h3>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center p-3 bg-neutral-50 rounded-lg">
+                <div>
+                  <p class="font-medium font-display text-neutral-600">菜单</p>
+                  <p class="text-sm text-neutral-500 font-sans">Cài dān</p>
+                </div>
+                <p class="text-neutral-600 font-sans">Menu</p>
+              </div>
+              
+              <div class="flex justify-between items-center p-3 bg-neutral-50 rounded-lg">
+                <div>
+                  <p class="font-medium font-display text-neutral-600">请给我菜单</p>
+                  <p class="text-sm text-neutral-500 font-sans">Qǐng gěi wǒ cài dān</p>
+                </div>
+                <p class="text-neutral-600 font-sans">May I have a menu?</p>
+              </div>
+              
+              <div class="flex justify-between items-center p-3 bg-neutral-50 rounded-lg">
+                <div>
+                  <p class="font-medium font-display text-neutral-600">水</p>
+                  <p class="text-sm text-neutral-500 font-sans">Shuǐ</p>
+                </div>
+                <p class="text-neutral-600 font-sans">Water</p>
+              </div>
+              
+              <div class="flex justify-between items-center p-3 bg-neutral-50 rounded-lg">
+                <div>
+                  <p class="font-medium font-display text-neutral-600">买单</p>
+                  <p class="text-sm text-neutral-500 font-sans">Mǎi dān</p>
+                </div>
+                <p class="text-neutral-600 font-sans">Check the bill</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-neutral-600 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center space-x-2 mb-4">
+            <i class="fa fa-map-signs text-white text-2xl"></i>
+            <h3 class="text-xl font-bold font-display">China Travel Guide</h3>
+          </div>
+          <p class="text-neutral-300 mb-4 font-sans">Your essential companion for exploring China with confidence</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-neutral-300 hover:text-white transition-colors">
+              <i class="fa fa-facebook"></i>
+            </a>
+            <a href="#" class="text-neutral-300 hover:text-white transition-colors">
+              <i class="fa fa-twitter"></i>
+            </a>
+            <a href="#" class="text-neutral-300 hover:text-white transition-colors">
+              <i class="fa fa-instagram"></i>
+            </a>
+            <a href="#" class="text-neutral-300 hover:text-white transition-colors">
+              <i class="fa fa-youtube-play"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-bold font-display mb-4">Quick Links</h4>
+          <ul class="space-y-2 font-sans">
+            <li><a href="#city-guide" class="text-neutral-300 hover:text-white transition-colors">City Guide</a></li>
+            <li><a href="#survival-guide" class="text-neutral-300 hover:text-white transition-colors">Survival Guide</a></li>
+            <li><a href="#emergency" class="text-neutral-300 hover:text-white transition-colors">Emergency</a></li>
+            <li><a href="#phrasebook" class="text-neutral-300 hover:text-white transition-colors">Phrasebook</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-bold font-display mb-4">Resources</h4>
+          <ul class="space-y-2 font-sans">
+            <li><a href="#" class="text-neutral-300 hover:text-white transition-colors">Travel Tips</a></li>
+            <li><a href="#" class="text-neutral-300 hover:text-white transition-colors">Safety Guide</a></li>
+            <li><a href="#" class="text-neutral-300 hover:text-white transition-colors">Cultural Etiquette</a></li>
+            <li><a href="#" class="text-neutral-300 hover:text-white transition-colors">Weather Guide</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-bold font-display mb-4">Newsletter</h4>
+          <p class="text-neutral-300 mb-4 font-sans">Subscribe to get the latest travel updates</p>
+          <form class="flex">
+            <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg w-full focus:outline-none text-neutral-600 font-sans">
+            <button type="submit" class="bg-primary hover:bg-primary/90 px-4 py-2 rounded-r-lg transition-colors">
+              <i class="fa fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="border-t border-neutral-500 mt-12 pt-8 text-center text-neutral-400 font-sans">
+        <p>© 2025 China Travel Guide. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // 导航栏滚动效果
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('py-2');
+        navbar.classList.remove('py-3');
+      } else {
+        navbar.classList.add('py-3');
+        navbar.classList.remove('py-2');
+      }
+    });
+    
+    // 移动端菜单切换
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // 关闭移动菜单
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+          }
+        }
+      });
+    });
+
+    // GitHub Integration
+    class GitHubIntegration {
+      constructor() {
+        this.token = localStorage.getItem('github_token');
+        this.init();
+      }
+
+      init() {
+        this.setupEventListeners();
+        this.updateAuthUI();
+      }
+
+      setupEventListeners() {
+        // Desktop buttons
+        document.getElementById('github-login-btn').addEventListener('click', () => this.login());
+        document.getElementById('github-logout-btn').addEventListener('click', () => this.logout());
+        document.getElementById('contribute-btn').addEventListener('click', () => this.showContributeModal());
+        
+        // Mobile buttons
+        document.getElementById('github-login-btn-mobile').addEventListener('click', () => this.login());
+        document.getElementById('github-logout-btn-mobile').addEventListener('click', () => this.logout());
+        document.getElementById('contribute-btn-mobile').addEventListener('click', () => this.showContributeModal());
+      }
+
+      login() {
+        const token = prompt('Please enter your GitHub Personal Access Token:');
+        if (token) {
+          this.token = token;
+          localStorage.setItem('github_token', token);
+          this.updateAuthUI();
+          this.showMessage('Login successful! You can now contribute content.', 'success');
+        }
+      }
+
+      logout() {
+        this.token = null;
+        localStorage.removeItem('github_token');
+        this.updateAuthUI();
+        this.showMessage('Logged out successfully.', 'info');
+      }
+
+      updateAuthUI() {
+        const isLoggedIn = !!this.token;
+        
+        // Desktop UI
+        document.getElementById('github-login-btn').classList.toggle('hidden', isLoggedIn);
+        document.getElementById('github-logout-btn').classList.toggle('hidden', !isLoggedIn);
+        document.getElementById('contribute-btn').classList.toggle('hidden', !isLoggedIn);
+        
+        // Mobile UI
+        document.getElementById('github-login-btn-mobile').classList.toggle('hidden', isLoggedIn);
+        document.getElementById('github-logout-btn-mobile').classList.toggle('hidden', !isLoggedIn);
+        document.getElementById('contribute-btn-mobile').classList.toggle('hidden', !isLoggedIn);
+      }
+
+      showContributeModal() {
+        const modal = document.createElement('div');
+        modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+        modal.id = 'contribute-modal';
+        
+        modal.innerHTML = `
+          <div class="bg-white rounded-xl p-8 max-w-md w-full">
+            <div class="flex justify-between items-center mb-6">
+              <h2 class="text-2xl font-bold font-display text-neutral-600">Contribute Content</h2>
+              <button id="close-contribute-modal" class="text-neutral-400 hover:text-neutral-600">
+                <i class="fa fa-times text-xl"></i>
+              </button>
+            </div>
+            
+            <div class="space-y-4">
+              <button id="add-city-btn" class="w-full px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors flex items-center justify-center">
+                <i class="fa fa-plus-circle mr-2"></i> Add City
+              </button>
+              
+              <button id="add-tip-btn" class="w-full px-6 py-3 bg-secondary text-white rounded-lg hover:bg-secondary/90 transition-colors flex items-center justify-center">
+                <i class="fa fa-plus-circle mr-2"></i> Add Survival Tip
+              </button>
+              
+              <div class="mt-6 p-4 bg-blue-50 rounded-lg">
+                <h3 class="font-medium text-blue-700 mb-2">About GitHub Integration</h3>
+                <p class="text-sm text-blue-600">
+                  This feature allows you to contribute content to our China Travel Guide. All content is stored in a GitHub repository and can be managed collaboratively.
+                </p>
+              </div>
+            </div>
+          </div>
+        `;
+        
+        document.body.appendChild(modal);
+        
+        document.getElementById('close-contribute-modal').addEventListener('click', () => {
+          document.body.removeChild(modal);
+        });
+        
+        document.getElementById('add-city-btn').addEventListener('click', () => {
+          document.body.removeChild(modal);
+          this.showCityForm();
+        });
+        
+        document.getElementById('add-tip-btn').addEventListener('click', () => {
+          document.body.removeChild(modal);
+          this.showSurvivalTipForm();
+        });
+      }
+
+      showCityForm() {
+        const modal = document.createElement('div');
+        modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+        modal.id = 'city-form-modal';
+        
+        modal.innerHTML = `
+          <div class="bg-white rounded-xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+              <h2 class="text-2xl font-bold font-display text-neutral-600">Add New City</h2>
+              <button id="close-city-form" class="text-neutral-400 hover:text-neutral-600">
+                <i class="fa fa-times text-xl"></i>
+              </button>
+            </div>
+            
+            <form id="city-form" class="space-y-6">
+              <div>
+                <label for="city-name" class="block text-neutral-600 font-medium mb-2">City Name</label>
+                <input type="text" id="city-name" name="name" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
+              </div>
+              
+              <div>
+                <label for="city-id" class="block text-neutral-600 font-medium mb-2">City ID (lowercase, no spaces)</label>
+                <input type="text" id="city-id" name="id" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
+              </div>
+              
+              <div>
+                <label for="city-description" class="block text-neutral-600 font-medium mb-2">Description</label>
+                <textarea id="city-description" name="description" rows="3" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required></textarea>
+              </div>
+              
+              <div>
+                <label for="city-image" class="block text-neutral-600 font-medium mb-2">City Image</label>
+                <input type="file" id="city-image" name="image" accept="image/*" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
+              </div>
+              
+              <div>
+                <label class="block text-neutral-600 font-medium mb-2">Attractions</label>
+                <div id="attractions-container" class="space-y-3">
+                  <div class="flex gap-2">
+                    <input type="text" name="attractions[]" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Attraction name">
+                  </div>
+                </div>
+                <button type="button" id="add-attraction-btn" class="mt-2 px-4 py-2 bg-primary/10 text-primary rounded-lg hover:bg-primary/20">Add Attraction</button>
+              </div>
+              
+              <div class="flex justify-end gap-4">
+                <button type="button" id="cancel-city-form" class="px-6 py-3 bg-neutral-100 text-neutral-600 rounded-lg hover:bg-neutral-200 transition-colors">Cancel</button>
+                <button type="submit" class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">Add City</button>
+              </div>
+            </form>
+          </div>
+        `;
+        
+        document.body.appendChild(modal);
+        
+        document.getElementById('close-city-form').addEventListener('click', () => {
+          document.body.removeChild(modal);
+        });
+        
+        document.getElementById('cancel-city-form').addEventListener('click', () => {
+          document.body.removeChild(modal);
+        });
+        
+        document.getElementById('add-attraction-btn').addEventListener('click', () => {
+          const container = document.getElementById('attractions-container');
+          const newAttraction = document.createElement('div');
+          newAttraction.className = 'flex gap-2';
+          newAttraction.innerHTML = `
+            <input type="text" name="attractions[]" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Attraction name">
+            <button type="button" class="remove-attraction-btn px-3 py-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200">-</button>
+          `;
+          container.appendChild(newAttraction);
+          
+          newAttraction.querySelector('.remove-attraction-btn').addEventListener('click', () => {
+            container.removeChild(newAttraction);
+          });
+        });
+        
+        document.getElementById('city-form').addEventListener('submit', (e) => {
+          e.preventDefault();
+          
+          // In a real app, this would upload to GitHub
+          // For now, we'll just show a success message
+          this.showMessage('City added successfully! In a production app, this would be saved to GitHub.', 'success');
+          document.body.removeChild(modal);
+        });
+      }
+
+      showSurvivalTipForm() {
+        const modal = document.createElement('div');
+        modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+        modal.id = 'tip-form-modal';
+        
+        modal.innerHTML = `
+          <div class="bg-white rounded-xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+              <h2 class="text-2xl font-bold font-display text-neutral-600">Add New Survival Tip</h2>
+              <button id="close-tip-form" class="text-neutral-400 hover:text-neutral-600">
+                <i class="fa fa-times text-xl"></i>
+              </button>
+            </div>
+            
+            <form id="tip-form" class="space-y-6">
+              <div>
+                <label for="tip-title" class="block text-neutral-600 font-medium mb-2">Title</label>
+                <input type="text" id="tip-title" name="title" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
+              </div>
+              
+              <div>
+                <label for="tip-id" class="block text-neutral-600 font-medium mb-2">Tip ID (lowercase, no spaces)</label>
+                <input type="text" id="tip-id" name="id" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
+              </div>
+              
+              <div>
+                <label for="tip-content" class="block text-neutral-600 font-medium mb-2">Current Situation</label>
+                <textarea id="tip-content" name="content" rows="3" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required></textarea>
+              </div>
+              
+              <div>
+                <label class="block text-neutral-600 font-medium mb-2">Solutions</label>
+                <div id="solutions-container" class="space-y-3">
+                  <div class="flex gap-2">
+                    <input type="text" name="solutions[]" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Solution">
+                  </div>
+                </div>
+                <button type="button" id="add-solution-btn" class="mt-2 px-4 py-2 bg-primary/10 text-primary rounded-lg hover:bg-primary/20">Add Solution</button>
+              </div>
+              
+              <div>
+                <label class="block text-neutral-600 font-medium mb-2">Recommended Apps (optional)</label>
+                <div id="apps-container" class="space-y-3">
+                  <div class="flex gap-2">
+                    <input type="text" name="apps[]" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="App name">
+                  </div>
+                </div>
+                <button type="button" id="add-app-btn" class="mt-2 px-4 py-2 bg-primary/10 text-primary rounded-lg hover:bg-primary/20">Add App</button>
+              </div>
+              
+              <div class="flex justify-end gap-4">
+                <button type="button" id="cancel-tip-form" class="px-6 py-3 bg-neutral-100 text-neutral-600 rounded-lg hover:bg-neutral-200 transition-colors">Cancel</button>
+                <button type="submit" class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">Add Tip</button>
+              </div>
+            </form>
+          </div>
+        `;
+        
+        document.body.appendChild(modal);
+        
+        document.getElementById('close-tip-form').addEventListener('click', () => {
+          document.body.removeChild(modal);
+        });
+        
+        document.getElementById('cancel-tip-form').addEventListener('click', () => {
+          document.body.removeChild(modal);
+        });
+        
+        document.getElementById('add-solution-btn').addEventListener('click', () => {
+          const container = document.getElementById('solutions-container');
+          const newSolution = document.createElement('div');
+          newSolution.className = 'flex gap-2';
+          newSolution.innerHTML = `
+            <input type="text" name="solutions[]" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Solution">
+            <button type="button" class="remove-solution-btn px-3 py-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200">-</button>
+          `;
+          container.appendChild(newSolution);
+          
+          newSolution.querySelector('.remove-solution-btn').addEventListener('click', () => {
+            container.removeChild(newSolution);
+          });
+        });
+        
+        document.getElementById('add-app-btn').addEventListener('click', () => {
+          const container = document.getElementById('apps-container');
+          const newApp = document.createElement('div');
+          newApp.className = 'flex gap-2';
+          newApp.innerHTML = `
+            <input type="text" name="apps[]" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="App name">
+            <button type="button" class="remove-app-btn px-3 py-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200">-</button>
+          `;
+          container.appendChild(newApp);
+          
+          newApp.querySelector('.remove-app-btn').addEventListener('click', () => {
+            container.removeChild(newApp);
+          });
+        });
+        
+        document.getElementById('tip-form').addEventListener('submit', (e) => {
+          e.preventDefault();
+          
+          // In a real app, this would upload to GitHub
+          // For now, we'll just show a success message
+          this.showMessage('Survival tip added successfully! In a production app, this would be saved to GitHub.', 'success');
+          document.body.removeChild(modal);
+        });
+      }
+
+      showMessage(message, type = 'info') {
+        const messageDiv = document.createElement('div');
+        const colors = {
+          success: 'bg-green-100 text-green-600',
+          error: 'bg-red-100 text-red-600',
+          info: 'bg-blue-100 text-blue-600'
+        };
+        
+        messageDiv.className = `fixed top-4 right-4 ${colors[type]} px-6 py-3 rounded-lg shadow-lg z-50 flex items-center`;
+        messageDiv.innerHTML = `
+          <i class="fa fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'} mr-2"></i>
+          <span>${message}</span>
+        `;
+        
+        document.body.appendChild(messageDiv);
+        
+        setTimeout(() => {
+          if (messageDiv.parentNode) {
+            document.body.removeChild(messageDiv);
+          }
+        }, 5000);
+      }
+    }
+
+    // Initialize GitHub integration
+    document.addEventListener('DOMContentLoaded', () => {
+      window.githubIntegration = new GitHubIntegration();
+    });
+  </script>
+</body>
+</html>
