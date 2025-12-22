@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Authentication Callback</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- Tailwind配置 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#165DFF',
+            neutral: {
+              100: '#F5F7FA',
+              200: '#E4E7ED',
+              300: '#C0C4CC',
+              400: '#909399',
+              500: '#606266',
+              600: '#303133',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Montserrat', 'sans-serif']
+          },
+        },
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+    }
+  </style>
+  
+  <!-- 引入字体 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-neutral-100 font-sans text-neutral-600 min-h-screen flex items-center justify-center p-4">
+  <div class="bg-white rounded-xl p-8 max-w-md w-full text-center shadow-lg">
+    <div id="loading-state" class="py-8">
+      <div class="animate-spin rounded-full h-16 w-16 border-b-4 border-primary mx-auto mb-6"></div>
+      <h2 class="text-2xl font-bold font-display text-neutral-600 mb-4 text-shadow">Processing GitHub Authentication</h2>
+      <p class="text-neutral-500 font-sans">Please wait while we complete your authentication...</p>
+    </div>
+    
+    <div id="success-state" class="py-8 hidden">
+      <div class="bg-green-100 text-green-500 p-4 rounded-full inline-block mb-6">
+        <i class="fa fa-check-circle text-4xl"></i>
+      </div>
+      <h2 class="text-2xl font-bold font-display text-neutral-600 mb-4 text-shadow">Authentication Successful!</h2>
+      <p class="text-neutral-500 font-sans mb-6">You have successfully authenticated with GitHub.</p>
+      <button id="continue-btn" class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg transition-all transform hover:scale-105 shadow-lg font-medium">
+        Continue to China Travel Guide
+      </button>
+    </div>
+    
+    <div id="error-state" class="py-8 hidden">
+      <div class="bg-red-100 text-red-500 p-4 rounded-full inline-block mb-6">
+        <i class="fa fa-exclamation-circle text-4xl"></i>
+      </div>
+      <h2 class="text-2xl font-bold font-display text-neutral-600 mb-4 text-shadow">Authentication Failed</h2>
+      <p id="error-message" class="text-neutral-500 font-sans mb-6">An error occurred during authentication.</p>
+      <button id="retry-btn" class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg transition-all transform hover:scale-105 shadow-lg font-medium">
+        Try Again
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // GitHub API 配置
+    const GITHUB_CLIENT_ID = 'Iv1.5e6c9b2a1d8f3e4c'; // 替换为实际的GitHub应用客户端ID
+    const GITHUB_CLIENT_SECRET = 'your-client-secret'; // 替换为实际的GitHub应用客户端密钥
+    const GITHUB_REDIRECT_URI = 'https://your-github-pages-url.github.io/china-travel-guide/callback.html'; // 替换为实际的回调URL
+    
+    // DOM 元素
+    const loadingState = document.getElementById('loading-state');
+    const successState = document.getElementById('success-state');
+    const errorState = document.getElementById('error-state');
+    const errorMessage = document.getElementById('error-message');
+    const continueBtn = document.getElementById('continue-btn');
+    const retryBtn = document.getElementById('retry-btn');
+    
+    // 初始化
+    document.addEventListener('DOMContentLoaded', () => {
+      // 检查URL中是否有授权码
+      const urlParams = new URLSearchParams(window.location.search);
+      const code = urlParams.get('code');
+      const error = urlParams.get('error');
+      
+      if (error) {
+        // 显示错误状态
+        showError(`Authentication error: ${urlParams.get('error_description') || error}`);
+        return;
+      }
+      
+      if (code) {
+        // 有授权码，尝试获取访问令牌
+        exchangeCodeForToken(code)
+          .then(token => {
+            // 保存令牌到localStorage
+            localStorage.setItem('github_token', token);
+            // 显示成功状态
+            showSuccess();
+          })
+          .catch(error => {
+            console.error('Authentication failed:', error);
+            showError('Failed to complete authentication. Please try again.');
+          });
+      } else {
+        // 没有授权码，显示错误
+        showError('No authorization code found. Please try again from the main page.');
+      }
+      
+      // 添加按钮事件监听器
+      continueBtn.addEventListener('click', () => {
+        window.location.href = 'index.html';
+      });
+      
+      retryBtn.addEventListener('click', () => {
+        window.location.href = 'index.html';
+      });
+    });
+    
+    // 交换授权码获取访问令牌
+    async function exchangeCodeForToken(code) {
+      try {
+        const response = await fetch('https://github.com/login/oauth/access_token', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            client_id: GITHUB_CLIENT_ID,
+            client_secret: GITHUB_CLIENT_SECRET,
+            code: code,
+            redirect_uri: GITHUB_REDIRECT_URI
+          })
+        });
+        
+        const data = await response.json();
+        
+        if (data.error) {
+          throw new Error(data.error_description || data.error);
+        }
+        
+        return data.access_token;
+      } catch (error) {
+        console.error('Error exchanging code for token:', error);
+        throw error;
+      }
+    }
+    
+    // 显示成功状态
+    function showSuccess() {
+      loadingState.classList.add('hidden');
+      successState.classList.remove('hidden');
+    }
+    
+    // 显示错误状态
+    function showError(message) {
+      loadingState.classList.add('hidden');
+      errorState.classList.remove('hidden');
+      errorMessage.textContent = message;
+    }
+  </script>
+</body>
+</html>
